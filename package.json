@@ -1,0 +1,11 @@
+{
+  "name": "lco-landing",
+  "version": "1.0.0",
+  "description": "Landing page concept for Legendary Club Owner — No Surrender Studio case study",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.0"
+  }
+}

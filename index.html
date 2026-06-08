@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Legendary Club Owner — The football brain game</title>
-<meta name="description" content="A football management game with zero luck and zero pay-to-win. Real match data, real rivals, and a fair shot for the managers who actually know the game." />
+<meta name="description" content="A football management game with zero luck and zero pay-to-win. Real match data, real rivals, and a fair shot for everyone who actually knows football." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -137,7 +137,7 @@
   .opts{display:flex;flex-direction:column;gap:12px}
   .opt{
     text-align:left;background:var(--surface-2);border:1px solid var(--line);color:var(--text);
-    padding:18px 22px;border-radius:14px;font-size:1.05rem;font-weight:600;cursor:pointer;
+    padding:18px 22px;border-radius:14px;font-size:1.12rem;font-weight:600;cursor:pointer;
     display:flex;align-items:center;gap:16px;transition:all .16s ease;font-family:inherit;
   }
   .opt .key{
@@ -160,10 +160,26 @@
   .retake{background:none;border:none;color:var(--muted);font-weight:700;cursor:pointer;font-family:inherit;font-size:1rem;border-bottom:1.5px solid var(--line);padding-bottom:3px}
   .retake:hover{color:var(--text);border-color:var(--green)}
 
-  /* ---------- closing ---------- */
+  .result-cta-line{color:#fff;font-weight:700;font-size:1.05rem;margin-bottom:18px}
+  .share-msg{margin-top:16px;color:var(--green);font-weight:600;font-size:.92rem;opacity:0;transition:opacity .3s;min-height:1.2em}
+  .share-card{max-width:340px;margin:18px auto 0}
+  .share-card img{width:100%;border-radius:16px;border:1px solid var(--line);display:block;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .retake{display:block;margin:22px auto 0;background:none;border:none;color:var(--muted);font-weight:700;cursor:pointer;font-family:inherit;font-size:1rem;border-bottom:1.5px solid var(--line);padding-bottom:3px}
+
+  /* ---------- closing / join ---------- */
   .closing{text-align:center;background:linear-gradient(180deg,var(--bg) 0%, #0c1822 100%);border-top:1px solid var(--line)}
   .closing h2{font-size:clamp(2.6rem,9vw,6rem);margin-bottom:10px}
-  .closing p{color:var(--muted);font-size:1.2rem;max-width:30ch;margin:0 auto 36px}
+  .closing p{color:var(--muted);font-size:1.2rem;max-width:34ch;margin:0 auto 36px}
+  .join-form{display:flex;gap:12px;max-width:480px;margin:0 auto;flex-wrap:wrap}
+  .join-input{flex:1;min-width:230px;background:var(--surface);border:1px solid var(--line);color:var(--text);padding:16px 22px;border-radius:100px;font-family:inherit;font-size:1rem}
+  .join-input::placeholder{color:var(--muted)}
+  .join-input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--glow)}
+  .join-form .btn{flex:none}
+  .email-error{color:#ff8b6b;font-size:.92rem;margin:16px auto 0;font-weight:600;display:none}
+  .join-success{display:none;max-width:48ch;margin:0 auto;animation:popIn .55s cubic-bezier(.2,.8,.2,1)}
+  .join-success.show{display:block}
+  .join-success h3{font-size:clamp(2.4rem,7vw,4rem);color:var(--green);text-shadow:0 0 50px var(--glow);margin-bottom:16px}
+  .join-success p{color:#C7CFDA;font-size:1.08rem;max-width:46ch;margin:0 auto 12px}
 
   /* ---------- footer ---------- */
   footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:.9rem}
@@ -202,12 +218,12 @@
   <div class="hero-inner">
     <p class="eyebrow reveal d1">A football game that respects what you know</p>
     <h1 class="display reveal d2">You've run this club <span class="em">in your head</span> for years.</h1>
-    <p class="sub reveal d3">Now do it for real. <b>No packs. No pay-to-win.</b> Just you, real match data, and the managers who actually know the game.</p>
+    <p class="sub reveal d3">Now do it for real. <b>No packs. No pay-to-win.</b> Just you, real match data, and everything you already know about football.</p>
     <div class="hero-actions reveal d4">
-      <a class="btn btn-primary" href="#quiz">What kind of manager are you?</a>
-      <a class="btn btn-ghost" href="#how">How it works</a>
+      <a class="btn btn-primary" href="#join">Claim your spot</a>
+      <a class="btn btn-ghost" href="#quiz">What kind of manager are you?</a>
     </div>
-    <div class="scrolltip reveal d4"><span class="dot"></span> Find out in 30 seconds</div>
+    <div class="scrolltip reveal d4"><span class="dot"></span> Claim your spot as a club owner before launch — play first, free</div>
   </div>
 </header>
 
@@ -221,21 +237,18 @@
     <div class="prop-grid">
       <div class="prop">
         <div class="n">01</div>
-        <h3>Your knowledge is the cheat code</h3>
-        <p>Every match runs on real performance data over a full 90 minutes. The eye you've trained watching football for years? Here it actually wins games.</p>
-        <span class="pain">Most mobile games ignore everything you know.</span>
+        <h3>Your knowledge is what matters most</h3>
+        <p>Every match runs on real performance data. The football you already understand is exactly what wins here.</p>
       </div>
       <div class="prop">
         <div class="n">02</div>
         <h3>Zero luck. No packs.</h3>
-        <p>No card draws, no dice, no random nonsense. Transfers, tactics, training — every result traces straight back to a decision you made.</p>
-        <span class="pain">No more losing to a lucky pack opening.</span>
+        <p>No card draws, no dice. Every result comes from your calls — transfers, tactics, training.</p>
       </div>
       <div class="prop">
         <div class="n">03</div>
         <h3>The best manager wins</h3>
-        <p>Free to play, never pay-to-win. Purchases are cosmetic only. The player at the top of the table is the sharpest mind — not the biggest wallet.</p>
-        <span class="pain">You already know who really runs that club.</span>
+        <p>Free to play, never pay-to-win. The top of the table is the sharpest mind, not the biggest wallet.</p>
       </div>
     </div>
   </div>
@@ -259,9 +272,9 @@
         <div class="q-count">Question 1 of 3</div>
         <div class="q-text">Deadline day. You've got the budget for one last signing.</div>
         <div class="opts">
-          <button class="opt" data-arch="T"><span class="key">A</span>The midfielder who makes my system click — fit over fame.</button>
-          <button class="opt" data-arch="S"><span class="key">B</span>An unknown 18-year-old I've been tracking for months.</button>
-          <button class="opt" data-arch="A"><span class="key">C</span>Nothing. Reinvest it in the academy — I build for three seasons' time.</button>
+          <button class="opt" data-arch="T"><span class="key">A</span>The midfielder who makes my system click.</button>
+          <button class="opt" data-arch="S"><span class="key">B</span>An unknown 18-year-old I've tracked for months.</button>
+          <button class="opt" data-arch="A"><span class="key">C</span>Nothing — reinvest it in the academy.</button>
         </div>
       </div>
 
@@ -270,9 +283,9 @@
         <div class="q-count">Question 2 of 3</div>
         <div class="q-text">1–0 down at home, 60 minutes gone. What's the call?</div>
         <div class="opts">
-          <button class="opt" data-arch="T"><span class="key">A</span>Switch shape, change the matchup, out-think them.</button>
-          <button class="opt" data-arch="S"><span class="key">B</span>Throw on the raw kid — fresh legs, no fear.</button>
-          <button class="opt" data-arch="A"><span class="key">C</span>Trust the plan and hold shape. Panic loses games.</button>
+          <button class="opt" data-arch="T"><span class="key">A</span>Switch shape and out-think them.</button>
+          <button class="opt" data-arch="S"><span class="key">B</span>Throw on the raw kid. Fresh legs, no fear.</button>
+          <button class="opt" data-arch="A"><span class="key">C</span>Hold shape. Trust the plan.</button>
         </div>
       </div>
 
@@ -293,23 +306,37 @@
         <div class="arch display" id="r-arch">THE TACTICIAN</div>
         <div class="line" id="r-line"></div>
         <div class="blurb" id="r-blurb"></div>
+        <p class="result-cta-line">Claim your spot as a club owner before launch.</p>
         <div class="result-actions">
-          <a class="btn btn-primary" id="r-cta" href="#play">Play free →</a>
-          <button class="retake" onclick="resetQuiz()">Take it again</button>
+          <a class="btn btn-primary" id="r-cta" href="#join">Claim your spot →</a>
+          <button class="btn btn-ghost" type="button" onclick="shareResult()">Share your result</button>
         </div>
-        <div class="share-note">📸 Screenshot it. Tag the mate who thinks they know better.</div>
+        <div class="share-msg" id="share-msg"></div>
+        <div class="share-card" id="share-card"></div>
+        <button class="retake" onclick="resetQuiz()">Take it again</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CLOSING -->
-<section class="closing sec-pad" id="play">
+<!-- JOIN -->
+<section class="closing sec-pad" id="join">
   <div class="wrap">
-    <p class="eyebrow">Live in Turkey · coming worldwide</p>
-    <h2 class="display">Stop arguing.<br>Start winning.</h2>
-    <p>You've had the answers for years. Now there's a table to prove them on.</p>
-    <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.nosurrenderstudio.efsanebaskan" target="_blank" rel="noopener">Play Legendary Club Owner — free</a>
+    <p class="eyebrow">Live in Turkey, launching worldwide</p>
+    <h2 class="display">Get in before kickoff</h2>
+    <p>The season's almost here. Lock in your spot now and play before everyone else when it opens.</p>
+
+    <form id="join-form" class="join-form" novalidate>
+      <input type="email" id="email" class="join-input" placeholder="Your email" aria-label="Your email" required />
+      <button type="submit" class="btn btn-primary">Lock in my spot</button>
+    </form>
+    <p class="email-error" id="email-error">Enter a valid email to lock in your spot.</p>
+
+    <div class="join-success" id="join-success">
+      <h3 class="display">You're in.</h3>
+      <p>You've taken your place among the legendary club owners — and the competition just got tougher, because you're in it now.</p>
+      <p>We're putting the finishing touches on the season. You get in first. Start planning your opening moves. ⚽</p>
+    </div>
   </div>
 </section>
 
@@ -343,6 +370,8 @@
   const result = document.getElementById('result');
   let current = 0;
   let counts = {T:0,S:0,A:0};
+  let lastArch = "";
+  let lastArchKey = "T";
 
   document.querySelectorAll('.opt').forEach(btn=>{
     btn.addEventListener('click',()=>{
@@ -371,6 +400,8 @@
   function showResult(){
     const key = decide();
     const a = ARCH[key];
+    lastArch = a.name.toLowerCase().replace(/\b\w/g, c=>c.toUpperCase());
+    lastArchKey = key;
     document.getElementById('r-arch').textContent  = a.name;
     document.getElementById('r-line').textContent  = a.line;
     document.getElementById('r-blurb').textContent = a.blurb;
@@ -381,6 +412,9 @@
   function resetQuiz(){
     counts = {T:0,S:0,A:0};
     current = 0;
+    document.getElementById('share-card').innerHTML = '';
+    const sm = document.getElementById('share-msg');
+    sm.textContent = ''; sm.style.opacity = '0';
     result.classList.remove('show');
     steps.forEach(s=>s.classList.remove('show'));
     bars.forEach(b=>{b.classList.remove('done','active')});
@@ -388,6 +422,144 @@
     bars[0].classList.add('active');
     document.getElementById('quiz').scrollIntoView({behavior:'smooth', block:'start'});
   }
+
+  function flash(msg){
+    const el = document.getElementById('share-msg');
+    el.textContent = msg;
+    el.style.opacity = '1';
+    clearTimeout(el._t);
+    el._t = setTimeout(()=>{ el.style.opacity = '0'; }, 2600);
+  }
+  // wrap text into lines that fit maxWidth on a canvas context
+  function wrapText(ctx, text, maxWidth){
+    const words = text.split(' ');
+    const lines = [];
+    let line = '';
+    for(const w of words){
+      const test = line ? line + ' ' + w : w;
+      if(ctx.measureText(test).width > maxWidth && line){
+        lines.push(line); line = w;
+      } else { line = test; }
+    }
+    if(line) lines.push(line);
+    return lines;
+  }
+
+  async function makeCard(){
+    if(document.fonts && document.fonts.ready){ try{ await document.fonts.ready; }catch(e){} }
+    const W = 1080, H = 1080;
+    const c = document.createElement('canvas');
+    c.width = W; c.height = H;
+    const x = c.getContext('2d');
+    const a = ARCH[lastArchKey] || ARCH.T;
+
+    // background
+    const g = x.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, '#0A0D13');
+    g.addColorStop(1, '#0c1822');
+    x.fillStyle = g; x.fillRect(0, 0, W, H);
+    // accent bar
+    x.fillStyle = '#1FD974'; x.fillRect(0, 0, W, 10);
+    // subtle border
+    x.strokeStyle = 'rgba(255,255,255,0.06)'; x.lineWidth = 2;
+    x.strokeRect(40, 40, W - 80, H - 80);
+
+    x.textAlign = 'center';
+    try{ x.letterSpacing = '8px'; }catch(e){}
+
+    // eyebrow
+    x.fillStyle = '#8a93a3';
+    x.font = '700 30px "Hanken Grotesk", Arial, sans-serif';
+    x.fillText('YOU MANAGE LIKE', W / 2, 250);
+
+    // archetype name (may wrap to 2 lines)
+    try{ x.letterSpacing = '2px'; }catch(e){}
+    x.fillStyle = '#1FD974';
+    x.font = '120px "Anton", Arial, sans-serif';
+    const nameLines = wrapText(x, a.name.toUpperCase(), W - 180);
+    let ny = 430 - (nameLines.length - 1) * 60;
+    for(const l of nameLines){ x.fillText(l, W / 2, ny); ny += 120; }
+
+    // tagline / line
+    try{ x.letterSpacing = '0px'; }catch(e){}
+    x.fillStyle = '#ffffff';
+    x.font = '600 46px "Hanken Grotesk", Arial, sans-serif';
+    const lineY = ny + 30;
+    const tagLines = wrapText(x, a.line, W - 240);
+    let ty = lineY;
+    for(const l of tagLines){ x.fillText(l, W / 2, ty); ty += 60; }
+
+    // footer
+    try{ x.letterSpacing = '6px'; }catch(e){}
+    x.fillStyle = '#8a93a3';
+    x.font = '700 30px "Hanken Grotesk", Arial, sans-serif';
+    x.fillText('LEGENDARY CLUB OWNER', W / 2, H - 150);
+    try{ x.letterSpacing = '0px'; }catch(e){}
+    x.fillStyle = '#c7cfda';
+    x.font = '38px "Hanken Grotesk", Arial, sans-serif';
+    x.fillText('What kind of manager are you?', W / 2, H - 95);
+
+    return new Promise(res => c.toBlob(res, 'image/png'));
+  }
+
+  function downloadBlob(blob, name){
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1500);
+  }
+
+  async function shareResult(){
+    flash('Creating your card…');
+    let blob;
+    try{ blob = await makeCard(); }
+    catch(e){ flash('Couldn’t create the card'); return; }
+    if(!blob){ flash('Couldn’t create the card'); return; }
+
+    // always show the generated card so the result is visible / long-press to save
+    const card = document.getElementById('share-card');
+    const url = URL.createObjectURL(blob);
+    card.innerHTML = '<img src="' + url + '" alt="Your manager type" />';
+
+    const file = new File([blob], 'lco-manager-type.png', { type: 'image/png' });
+    const text = `I'm ${lastArch} in Legendary Club Owner. What kind of manager are you?`;
+
+    // mobile: native share sheet with the image file
+    if(navigator.canShare && navigator.canShare({ files: [file] })){
+      try{
+        await navigator.share({ files: [file], title: 'Legendary Club Owner', text });
+        flash('');
+        return;
+      }catch(err){
+        if(err && err.name === 'AbortError'){ flash(''); return; }
+      }
+    }
+    // desktop / unsupported: download the image to share manually
+    try{ downloadBlob(blob, 'lco-manager-type.png'); flash('Card saved as an image — share it anywhere'); }
+    catch(e){ flash('Long-press the card to save it'); }
+  }
+
+  // ---- email signup (front-end only demo; would connect to a real list at launch) ----
+  const joinForm = document.getElementById('join-form');
+  const joinSuccess = document.getElementById('join-success');
+  const emailInput = document.getElementById('email');
+  const emailError = document.getElementById('email-error');
+
+  joinForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const v = emailInput.value.trim();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    if(!valid){
+      emailError.style.display = 'block';
+      emailInput.focus();
+      return;
+    }
+    emailError.style.display = 'none';
+    joinForm.style.display = 'none';
+    joinSuccess.classList.add('show');
+    joinSuccess.scrollIntoView({behavior:'smooth', block:'center'});
+  });
 </script>
 </body>
 </html>
