@@ -7,7 +7,7 @@ the Management Associate case study.
 **Live page:** https://tygurlesin.github.io/lco-landing/
 
 The whole experience is a single, mobile-responsive `index.html` file. It is built
-around one target reader — *Alex, 24, a London football fan who plays mobile games
+around one target persona — *Alex, 24, a London football fan who plays mobile games
 casually* — and one core idea: in this game your football knowledge wins, not your
 wallet. No packs, no luck, no pay-to-win.
 
